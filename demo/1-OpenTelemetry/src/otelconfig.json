@@ -1,0 +1,31 @@
+{
+  "OpenTelemetryConfiguration": {
+    "resource_attributes": "service.name=PUGWorkshop2025DemoApp",
+    "exporters": {
+      "otlp": {
+        "grpc": [
+          {
+            "endpoint": "http://ec2-13-217-224-70.compute-1.amazonaws.com:4317",
+            "span_processor": "batch",
+            "batch_processor_options": {
+              "max_queue_size": 500
+            }
+          }
+        ]
+      },
+      "ostream": [
+        {
+          "filename": "otelTraceData.out",
+          "span_processor": "simple"
+        }
+      ]
+    }
+  },
+  "OpenEdgeTelemetryConfiguration": {
+    "trace_procedures": "*",
+    "trace_classes": "*",
+    "trace_abl_transactions": true,
+    "trace_requires_parent": true,
+    "trace_request_start": true
+  }
+}

@@ -1,0 +1,243 @@
+<project name="SampleGenerator" basedir="." default="usage">
+
+    <!-- Utilize a local file for properties. Allows build.xml to provide defaults only. -->
+    <property file="${basedir}/build.properties"/>
+
+    <target name="usage" description="Usage Instructions">
+        <init_oe/> <!-- Set standard environment variables. -->
+
+        <echo message="${line.separator}Usage Instructions:"/>
+        <echo message="${line.separator}proant generate - Create a Sports2020 database and execute sample code with memory profiling enabled"/>
+    </target>
+
+    <macrodef name="init_env">
+        <sequential>
+            <!-- Access environmental variables via "env.*". -->
+            <property environment="env"/>
+
+            <!-- Set a property if environment is Windows. -->
+            <condition property="isWin">
+                <os family="windows"/>
+            </condition>
+
+            <!-- Set a property if environment is Unix. -->
+            <condition property="isUnix">
+                <os family="unix"/>
+            </condition>
+
+            <!-- Set a property if environment is 32bit. -->
+            <condition property="is32bit">
+                <or>
+                    <os arch="x86"/>
+                    <os arch="i386"/>
+                </or>
+            </condition>
+
+            <!-- Set a property if environment is 64bit. -->
+            <condition property="is64bit">
+                <not>
+                    <or>
+                        <os arch="x86"/>
+                        <os arch="i386"/>
+                    </or>
+                </not>
+            </condition>
+
+            <!-- Set a property for the local OS architecture. -->
+            <condition property="archBuild" value="linuxx86_64" else="nt64">
+                <os family="unix"/>
+            </condition>
+
+            <!-- Set the script suffix for the OS. -->
+            <condition property="scriptSuffix" value=".sh" else=".bat">
+                <os family="unix"/>
+            </condition>
+
+            <!-- Set the executable suffix for the OS. -->
+            <condition property="execSuffix" value="" else=".exe">
+                <os family="unix"/>
+            </condition>
+
+            <!-- Set path delimiter for the OS. -->
+            <condition property="delim" value="/" else="\">
+                <os family="unix"/>
+            </condition>
+
+            <!-- Set general properties for this build file. -->
+        </sequential>
+    </macrodef>
+
+    <macrodef name="init_oe">
+        <sequential>
+            <init_env/> <!-- Initialize environmental and general properties. -->
+
+            <!-- Fail immediately if not a 64-bit OS. -->
+            <fail message="Environment is not 64-bit">
+                <condition>
+                    <not>
+                        <isset property="is64bit"/>
+                    </not>
+                </condition>
+            </fail>
+
+            <!-- Check if DLC is set as an environment variable. -->
+            <fail message="DLC Home path is not set">
+                <condition>
+                    <and>
+                        <not><isset property="dlcHome"/></not>
+                        <not><isset property="env.DLC"/></not>
+                    </and>
+                </condition>
+            </fail>
+            <property name="dlcHome" value="${env.DLC}"/>
+            <echo message="DLC Home: ${dlcHome}"/>
+
+            <!-- Assume the DLC WRK directory unless overridden. -->
+            <condition property="wrk" value="/usr/wrk" else="C:\OpenEdge\WRK">
+                <os family="unix"/>
+            </condition>
+
+            <!-- Load the current PCT library from DLC. -->
+            <taskdef resource="PCT.properties" classpath="${dlcHome}/pct/PCT.jar"/>
+            <!-- Define this property to disable anonymous PCT statistics telemetry. -->
+            <property name="pct.skip.analytics" value=""/>
+
+            <!-- Access the OE version info, and read into a property. -->
+            <ProgressVersion dlcHome="${dlcHome}" majorVersion="oeMajor" minorVersion="oeMinor" revision="oeRev" fullVersion="full"/>
+            <property name="oe.version" value="${oeMajor}.${oeMinor}.${oeRev}"/>
+            <echo message="OpenEdge Version: ${oe.version}"/>
+
+            <!-- Add the appropriate ANT-Contrib library to this environment (v0.6 present in 11.7.4+ and 12.0+ and updated to v1.0b3 in 12.8+). -->
+            <loadtask resource="net/sf/antcontrib/antcontrib.properties" classfile="${dlcHome}/ant/lib/ant-contrib-0.6.jar"/>
+            <loadtask resource="net/sf/antcontrib/antcontrib.properties" classfile="${dlcHome}/ant/lib/ant-contrib-1.0b3.jar"/>
+
+            <!-- Set OpenEdge properties for this build file. -->
+
+
+            <if>
+                <equals arg1="${oeMajor}" arg2="11"/>
+                <then>
+                    <!-- OpenEdge 11.7.x -->
+                    <fail message="OpenEdge versions prior to 12.8 are not supported."/>
+                </then>
+                <else>
+                    <if>
+                        <!-- OpenEdge 12.x -->
+                        <equals arg1="${oeMajor}" arg2="12"/>
+                        <then>
+                            <if>
+                                <equals arg1="${oeMinor}" arg2="8"/>
+                                <then>
+                                    <!-- OpenEdge 12.8 -->
+                                </then>
+                                <else>
+                                    <!-- OpenEdge 12.0-12.7 -->
+                                    <fail message="OpenEdge versions prior to 12.8 are not supported."/>
+                                </else>
+                            </if>
+                        </then>
+                    </if>
+                </else>
+            </if>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="loadtask">
+        <!-- Usage <loadtask resource="_resource_string_" classfile="_path_to_file_"/> -->
+        <attribute name="resource"/>
+        <attribute name="classfile"/>
+
+        <sequential>
+            <condition property="file.exists">
+                <available file="@{classfile}" type="file"/>
+            </condition>
+
+            <taskdef resource="@{resource}" classpath="@{classfile}"/>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="require">
+        <!-- Usage <require file="_path_to_file_"/> -->
+        <attribute name="file"/>
+        <attribute name="message" default="File @{file} not set or missing"/>
+
+        <sequential>
+            <fail message="@{message}">
+                <condition>
+                    <not>
+                        <available file="@{file}" type="file"/>
+                    </not>
+                </condition>
+            </fail>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="requireDir">
+        <!-- Usage <requireDir folder="_path_to_folder_"/> -->
+        <attribute name="folder"/>
+        <attribute name="message" default="Directory @{folder} not set or missing"/>
+
+        <sequential>
+            <fail message="@{message}">
+                <condition>
+                    <not>
+                        <available file="@{folder}" type="dir"/>
+                    </not>
+                </condition>
+            </fail>
+        </sequential>
+    </macrodef>
+
+    <macrodef name="build_db">
+        <sequential>
+            <!-- Create a Sports2020 database for testing. -->
+            <PCTCreateBase destDir="${basedir}" dbName="Sports2020" dlcHome="${dlcHome}"
+                           sourceDb="${dlcHome}/Sports2020" largeFiles="true">
+            </PCTCreateBase>
+        </sequential>
+    </macrodef>
+
+    <target name="generate">
+        <init_oe/> <!-- Set standard environment variables. -->
+
+        <build_db/>
+
+        <!-- Run the same program twice, once normally with proper cleanup, then again to cause a memory leak. -->
+        <PCTDynRun
+               dlcHome="${dlcHome}"
+               graphicalMode="false"
+               tempDir="${basedir}"
+               procedure="ObjectGen.p">
+            <DBConnection dbName="Sports2020" dbDir="${basedir}" singleUser="true"/>
+            <propath>
+                <pathelement path="${basedir}"/>
+            </propath>
+            <Option name="-profileMemory" value="mprofiler.config" />
+        </PCTDynRun>
+        <PCTDynRun
+               dlcHome="${dlcHome}"
+               graphicalMode="false"
+               tempDir="${basedir}"
+               procedure="ObjectGen.p">
+            <DBConnection dbName="Sports2020" dbDir="${basedir}" singleUser="true"/>
+            <propath>
+                <pathelement path="${basedir}"/>
+            </propath>
+            <Option name="-profileMemory" value="mprofiler.config" />
+            <Parameter name="DoLeak" value="true"/>
+        </PCTDynRun>
+
+        <!-- Generate specific objects in a set order to create a known call stack. -->
+        <PCTDynRun
+               dlcHome="${dlcHome}"
+               graphicalMode="false"
+               tempDir="${basedir}"
+               procedure="CallTree.p">
+            <propath>
+                <pathelement path="${basedir}"/>
+            </propath>
+            <Option name="-profileMemory" value="mprofiler.config" />
+        </PCTDynRun>
+    </target>
+
+</project>

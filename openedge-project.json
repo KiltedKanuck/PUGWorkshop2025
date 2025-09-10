@@ -1,0 +1,28 @@
+{
+  "name": "PUGWorkshop2025", // Project name, will be used in the future for dependency management
+  "version": "1.0",    // Project version number, will be used in the future for dependency management
+  "oeversion": "12.8", // Must reference an existing ABL version in Settings -> Extensions -> ABL Configuration -> Runtimes
+  "graphicalMode": false, // True for prowin[32], false for _progres
+  "charset": "utf-8",  // Charset
+  "extraParameters": "", // Extra Progress command line parameters
+  "preprocessor": { // Customize parser behavior (optional)
+    // "windowSystem": "MS-WINDOWS",
+    // "processArchitecture": 32
+  },
+  // Only required if your project use extensions other than ".i" for include files.
+  // If not specified, modifying files with such extension will not trigger a compilation
+  "includeFileExtensions": [ ".i", ".f" ],
+  "buildPath": [
+    // Entries can have type 'source' or 'propath'. Path attribute is mandatory. Build attribute is optional (defaults to 'path'). Xref attribute is optional (defaults to 'build/.pct' or '.builder/srcX')
+    // Source directories must be subdirectories of the project root directory. Relative paths are highly recommended.
+    { "type": "source", "path": "src/main/abl" },
+    { "type": "source", "path": "src/test/abl" },
+    // Include and exclude patterns are case-insensitive on Windows, and case-sensitive on any other operating system
+    { "type": "propath", "path": "${DLC}/tty/netlib/OpenEdge.net.pl", "documentation": "openedge.json" }
+  ],
+  "buildDirectory": "build", // Optional global build directory
+  "dbConnections": [],
+  "numThreads": 1, // Number of OpenEdge sessions handling build
+  "procedures": [],
+  "profiles": [ /* See section below */ ]
+}
