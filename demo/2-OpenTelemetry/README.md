@@ -3,7 +3,7 @@ OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument, ge
 
 [What is OpenTelemetry ](https://opentelemetry.io/docs/what-is-opentelemetry/)
 
-[OpenTelemetry Documentation](https://opentelemetry.io/docs/)
+[OpenEdge OpenTelemetry Documentation](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Monitor-ABL-applications-using-OpenTelemetry.html)
 
 ## About
 1. First introduced into OpenEdge in 12.8
