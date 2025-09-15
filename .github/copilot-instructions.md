@@ -11,16 +11,6 @@ The repository currently contains minimal content. The main entry point for proj
 - Follow additional standards in `.github/instructions/general.instructions.md`.
 - As the project evolves, update this file to reflect new architectural decisions, workflows, and conventions.
 
-### Variable Declaration
-- Prefer the `var` statement over `define variable` when declaring variables in ABL code.
-
-### Naming Conventions
-- Use camelCase for variable names in ABL code.
-- Never use hyphens (`-`) in variable names.
-
-### Keyword and Style Conventions
-- Use lowercase ABL keywords (e.g., `class`, `interface`, `define`, `method`, `property`, etc.).
-
 ## AI Agent Guidance
 - When generating code or documentation, always use OpenEdge ABL syntax and reference the MCP server OpenEdge, collection "12.8" for syntax, examples and best practices.
 - Prefer explicit, discoverable patterns over generic advice.
