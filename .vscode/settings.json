@@ -1,0 +1,15 @@
+{
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "abl.configuration.defaultRuntime": "12.8",
+    "abl.configuration.hideAvmWindow": true,
+    "abl.configuration.runtimes": [
+        {
+            "name": "12.8",
+            "path": "C:/OE12.8/DLC"
+        }
+    ],
+    "abl.outline.showContentInIncludeFiles": true,
+    "abl.outline.showIncludeFiles": true,
+    "chat.mcp.autostart": "newAndOutdated",
+    "files.autoSave": "afterDelay"
+}
