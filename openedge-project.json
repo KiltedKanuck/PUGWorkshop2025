@@ -11,7 +11,7 @@
   },
   // Only required if your project use extensions other than ".i" for include files.
   // If not specified, modifying files with such extension will not trigger a compilation
-  "includeFileExtensions": [ ".i", ".f" ],
+  "includeFileExtensions": [ ".i", ".if" ],
   "buildPath": [
     // Entries can have type 'source' or 'propath'. Path attribute is mandatory. Build attribute is optional (defaults to 'path'). Xref attribute is optional (defaults to 'build/.pct' or '.builder/srcX')
     // Source directories must be subdirectories of the project root directory. Relative paths are highly recommended.

@@ -2,7 +2,18 @@
 applyTo: '**'
 ---
 Provide project context and coding guidelines that AI should follow when generating code, answering questions, or reviewing changes.
+### Variable Declaration
+- Prefer the `var` statement over `define variable` when declaring variables in ABL code.
 
+### Naming Conventions
+- Use camelCase for variable names in ABL code.
+- Never use hyphens (`-`) in variable names.
+
+### Keyword and Style Conventions
+- Use lowercase ABL keywords (e.g., `class`, `interface`, `define`, `method`, `property`, etc.).
+
+### General Guidelines
+When contributing to this project, please adhere to the following guidelines:
 1. **Project Structure**: Understand the overall structure of the project, including key directories and files. This will help in navigating the codebase and making informed decisions.
 
 2. **Coding Standards**: Follow established coding standards and best practices for the programming languages and frameworks used in the project. This includes naming conventions, code organization, and documentation requirements.
