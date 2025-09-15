@@ -46,5 +46,5 @@ Inside the file called ```otelconfig.json``` we define the 'exporter' along with
 Now we should run the code and collect some tracing
 ```
 cd ./src
-pro -otelconfig otelconfig.json -p mainproc.p
+pro -otelconfig otelconfig.json -profile prof.cfg -p mainproc.p
 ```

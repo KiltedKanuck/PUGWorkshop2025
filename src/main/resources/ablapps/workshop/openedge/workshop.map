@@ -1,0 +1,26 @@
+{
+  "services": {
+    "workshop": {
+      "version": "1.0.0",
+      "operations": {
+        "\/mainproc": {
+          "GET": {
+            "contentType": "text\/html",
+            "options": {
+              "writeBI": false,
+              "requestEnvelope": false,
+              "responseEnvelope": false
+            },
+            "entity": {
+              "name": "OpenEdge.Workshop.Interface.SampleService",
+              "function": "RunSample",
+              "arg" : []
+            }
+          }
+        }
+      },  
+      "schemas": {
+      }
+    }
+  }
+}

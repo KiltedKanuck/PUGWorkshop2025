@@ -1,0 +1,14 @@
+{
+    "version": "2.0",
+    "serviceName": "",
+    "handlers": [{
+        "uri": "/ping",
+        "class": "OpenEdge.Web.PingWebHandler",
+        "enabled": true
+    },  
+    {
+        "uri": "/pdo",
+        "class": "OpenEdge.Web.DataObject.DataObjectHandler",
+        "enabled": true
+    }]
+}
