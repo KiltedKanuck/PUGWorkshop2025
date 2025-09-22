@@ -14,9 +14,9 @@ OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument, ge
 ## OpenEdge Config
 Inside the file called ```otelconfig.json``` we define the 'exporter' along with the 'OpenEdgeTelemetryConfiguration'. Our endpoint is in AWS, so we will use the following configuration. 
 ```
-
 {
   "OpenTelemetryConfiguration": {
+    "resource_attributes": "service.name=PUGWorkshop2025DemoApp",
     "exporters": {
       "otlp": {
         "grpc": [
@@ -28,7 +28,13 @@ Inside the file called ```otelconfig.json``` we define the 'exporter' along with
             }
           }
         ]
-      }
+      },
+      "ostream": [
+        {
+          "filename": "otelTraceData.out",
+          "span_processor": "simple"
+        }
+      ]
     }
   },
   "OpenEdgeTelemetryConfiguration": {

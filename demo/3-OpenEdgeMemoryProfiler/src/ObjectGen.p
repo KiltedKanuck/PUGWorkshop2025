@@ -16,12 +16,12 @@ var handle thCustomer = temp-table ttCustomer:handle.
 
 create widget-pool "Test Pool".
 
-assign cLeak = dynamic-function("getParameter" in source-procedure, "DoLeak") when (dynamic-function("getParameter" in source-procedure, "DoLeak") gt "") eq true.
+assign cLeak = entry(2,entry(1, session:parameter),"=").
 assign lLeak = can-do("1,true,yes", trim(cLeak)).
 
 message substitute("Running Generator; Leak: &1", lLeak).
 
-do iCount = 1 to 10:
+do iCount = 1 to 5:
     MemoryProfiler:TakeSnapshot(substitute("Pre &1", iCount)).
 
     // Populate the temp-table with data.
@@ -37,6 +37,8 @@ do iCount = 1 to 10:
 end.
 
 MemoryProfiler:TakeSnapshot("Finished").
+
+quit.
 
 finally:
     if not lLeak then

@@ -11,5 +11,6 @@
     "abl.outline.showContentInIncludeFiles": true,
     "abl.outline.showIncludeFiles": true,
     "chat.mcp.autostart": "newAndOutdated",
-    "files.autoSave": "afterDelay"
+    "files.autoSave": "afterDelay",
+    "abl.buildMode": 1
 }

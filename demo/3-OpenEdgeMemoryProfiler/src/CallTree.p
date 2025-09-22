@@ -33,7 +33,7 @@ if true then
     run procC.p.
 
 Progress.Profiler.MemoryProfiler:TakeSnapshot("Post").
-
+quit.
 finally:
     define variable cReportName as character no-undo.
     MemoryProfiler:GetOutputFileName(output cReportName).

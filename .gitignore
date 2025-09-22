@@ -3,3 +3,7 @@ build
 *.r
 **/*.r
 **/*.out
+*.oemp
+lbia*
+rcda*
+srta*
