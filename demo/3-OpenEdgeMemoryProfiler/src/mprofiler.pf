@@ -1,6 +1,0 @@
--db sports2020 -H 127.0.0.1 -S 11000
--profileMemory mprofiler.config
--s 50          # Stack size
--h 10          # Hash table size
--mmax 32768    # Maximum memory (32MB)
-
