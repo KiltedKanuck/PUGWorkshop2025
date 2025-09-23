@@ -41,5 +41,5 @@ compile <<file-name>> -debug-list <<list-filename>>
  * Use the [```Progress.Database.TempTableinfo```](https://docs.progress.com/bundle/abl-reference/page/Progress.Database.TempTableInfo-class.html) class to archive temp-table data. It provides methods for getting the handle of a given temp-table VST and also for getting the information of the temp-table by position and by ID
 
  ## Enhanced logging features
-  * [Log entry types (Client context)](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Log-entry-types-Client-context.html)
-  * []()
+  * [Log entry types](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Log-entry-types.html)
+  * [Application level Logging](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Application-level-logging.html)

@@ -33,7 +33,10 @@ if true then
     run procC.p.
 
 Progress.Profiler.MemoryProfiler:TakeSnapshot("Post").
-quit.
+
+if session:client-type = "4GLCLIENT" then
+    quit.
+
 finally:
     define variable cReportName as character no-undo.
     MemoryProfiler:GetOutputFileName(output cReportName).

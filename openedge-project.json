@@ -17,13 +17,12 @@
     // Source directories must be subdirectories of the project root directory. Relative paths are highly recommended.
     { "type": "source", "path": "src/main/abl" },
     { "type": "source", "path": "src/test/abl" },
-    { "type": "source", "path": "demo/2-OpenTelemetry/src" },
-    { "type": "source", "path": "demo/3-OpenEdgeMemoryProfiler/src" },
+    { "type": "source", "path": "src/main/abl/examples" },
+    { "type": "source", "path": "src/main/resources" },
     // Include and exclude patterns are case-insensitive on Windows, and case-sensitive on any other operating system
     { "type": "propath", "path": "${DLC}/tty/netlib/OpenEdge.net.pl", "documentation": "openedge.json" }
     
   ],
-  
   "dbConnections": [ // Unlimited number of connections - Beware of -h
     {
       "name": "sports2020", // Logical name of database, or physical name if -ld is not used

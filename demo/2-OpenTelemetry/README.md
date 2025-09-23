@@ -5,6 +5,8 @@ OpenTelemetry is a collection of APIs, SDKs, and tools. Use it to instrument, ge
 
 [OpenEdge OpenTelemetry Documentation](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Monitor-ABL-applications-using-OpenTelemetry.html)
 
+[OpenEdge Command Center OpenTelemetry Documentation](https://docs.progress.com/bundle/openedge-command-center/page/Enable-OpenTelemetry.html)
+
 ## About
 1. First introduced into OpenEdge in 12.8
 2. METRICS (db and PASOE) are supported throught OECC
@@ -52,12 +54,29 @@ Inside the file called ```otelconfig.json``` we define the 'exporter' along with
 ```
 *Note: Your config endpoint will be different.
 
-## Enable 
-Now we should run the code and collect some tracing
+## Enable AVM
+Now we should run the code in the AVM both interactively and in batch mode and collect some tracing
 ```
-cd ./src
-pro -otelconfig otelconfig.json -profile prof.cfg -p mainproc.p
+cd ./src/main/abl/examples
+pro -otelconfig ../../resources/otel/otelconfig.json -p mainproc.p
+bpro -otelconfig ../../resources/otel/otelconfig.json -p mainproc.p
 ```
+
+## Enable PASOE
+Now we should run the code in the PASOE and collect some tracing
+
+_From a prowershell_
+```
+cd src/main/resources
+run deploy.bat
+```
+_In windows explorer navigate to [C:\servers\workshop\conf]_
+
+* edit openedge.properties
+* Find the stanza for [AppServer.SessMgr]
+* modify the following line `otelConfigFile=${catalina.base}/openedge/resources/otelconfig.json`
+
+
 ## Visualize
 Open our shared Jaeger instance at 
 [Workshop Jaeger](http://ec2-13-217-224-70.compute-1.amazonaws.com:16686/search)

@@ -9,16 +9,28 @@
     Notes       : 
   ----------------------------------------------------------------------*/
 
-USING Progress.Lang.*.
+using Progress.Lang.*.
 
-BLOCK-LEVEL ON ERROR UNDO, THROW.
+block-level on error undo, throw.
 
-CLASS OpenEdge.Workshop.Interface.SampleService: 
+class OpenEdge.Workshop.Interface.ExampleService: 
 
-    METHOD PUBLIC VOID RunSample(  ):
+    method public void mainProc(  ):
 
         run examples/mainproc.p .
 
-    END METHOD.
+    end method.
 
-END CLASS.
+    method public void addMemory(  ):
+
+      run examples/addMemory.p .
+
+    end method.
+
+    method public void callTree(  ):
+
+      run examples/callTree.p .
+
+    end method.
+
+end class.

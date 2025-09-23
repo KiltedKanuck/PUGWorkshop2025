@@ -12,8 +12,38 @@
               "responseEnvelope": false
             },
             "entity": {
-              "name": "OpenEdge.Workshop.Interface.SampleService",
-              "function": "RunSample",
+              "name": "OpenEdge.Workshop.Interface.ExampleService",
+              "function": "mainProc",
+              "arg" : []
+            }
+          }
+        },
+        "\/addMemory": {
+          "GET": {
+            "contentType": "text\/html",
+            "options": {
+              "writeBI": false,
+              "requestEnvelope": false,
+              "responseEnvelope": false
+            },
+            "entity": {
+              "name": "OpenEdge.Workshop.Interface.ExampleService",
+              "function": "addMemory",
+              "arg" : []
+            }
+          }
+        },
+        "\/callTree": {
+          "GET": {
+            "contentType": "text\/html",
+            "options": {
+              "writeBI": false,
+              "requestEnvelope": false,
+              "responseEnvelope": false
+            },
+            "entity": {
+              "name": "OpenEdge.Workshop.Interface.ExampleService",
+              "function": "callTree",
               "arg" : []
             }
           }

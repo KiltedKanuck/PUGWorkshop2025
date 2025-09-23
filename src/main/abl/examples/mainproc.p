@@ -46,7 +46,7 @@
    
    Notes:
    - Designed to work with OpenTelemetry configuration (otelconfig.json)
-   - Creates 25 random procedure calls for comprehensive trace data
+   - Creates X random procedure calls for comprehensive trace data
    - Each execution creates different trace patterns due to randomization
    - Pause statements simulate real-world processing delays
    - Use with Jaeger or other APM tools to visualize traces
@@ -63,7 +63,7 @@
 /* Variable declarations */
 var int procNumber = 0,     // Random procedure number (1-5)
         looper = 0,         // Loop counter
-        loops = 25.         // Total number of procedure calls to make
+        loops = 5.         // Total number of procedure calls to make
 
 /* ===================================================================
    MAIN PROGRAM LOGIC
@@ -82,4 +82,5 @@ do looper = 1 to loops:
 end.
 
 /* Terminate the session cleanly */
-quit.
+if session:client-type = "4GLCLIENT" then
+    quit.
