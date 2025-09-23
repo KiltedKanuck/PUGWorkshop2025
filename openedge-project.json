@@ -27,6 +27,10 @@
     {
       "name": "sports2020", // Logical name of database, or physical name if -ld is not used
       "connect": "-db sports2020 -H 127.0.0.1 -S 11000" // ABL connection string
+    },
+    {
+      "name": "oediagdb", // Logical name of database, or physical name if -ld is not used
+      "connect": "-db oediagdb -H 127.0.0.1 -S 5555" // ABL connection string
     }
   ],
   "numThreads": 1, // Number of OpenEdge sessions handling build
