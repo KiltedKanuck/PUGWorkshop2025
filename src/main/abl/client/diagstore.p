@@ -10,7 +10,7 @@
 
 /* Variable declarations using camelCase naming convention */
 var integer requestId.
-var character fileName, outputDir = "./", fileExtension = ".prof".
+var character fileName, outputDir = "temp\", fileExtension = ".prof".
 
 /* Ensure output directory exists */
 file-info:file-name = outputDir.
@@ -19,7 +19,7 @@ if file-info:file-type = ? then do:
         view-as alert-box error.
     return.
 end.
-else if file-info:file-type <> "d" then do:
+else if file-info:file-type <> "DRW" then do:
     message "Output path is not a directory: " + outputDir
         view-as alert-box error.
     return.
