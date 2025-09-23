@@ -5,3 +5,4 @@ xcopy /E /I /Y /D "C:\workspace\PUGWorkshop2025\src\main\resources\otel\*" "C:\s
 xcopy /E /I /Y /D "C:\workspace\PUGWorkshop2025\src\main\resources\ablapps\*" "C:\servers\workshop\ablapps"
 xcopy /E /I /Y /D "C:\workspace\PUGWorkshop2025\src\main\resources\adapters\*" "C:\servers\workshop\webapps\ROOT\WEB-INF\adapters"
 xcopy /E /I /Y /D "C:\workspace\PUGWorkshop2025\src\main\abl\*" "C:\servers\workshop\openedge"
+xcopy /E /I /Y /D "C:\workspace\PUGWorkshop2025\src\main\resources\oprof\*.qry" "C:\servers\workshop\bin\"

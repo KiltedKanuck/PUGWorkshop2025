@@ -41,5 +41,13 @@ compile <<file-name>> -debug-list <<list-filename>>
  * Use the [```Progress.Database.TempTableinfo```](https://docs.progress.com/bundle/abl-reference/page/Progress.Database.TempTableInfo-class.html) class to archive temp-table data. It provides methods for getting the handle of a given temp-table VST and also for getting the information of the temp-table by position and by ID
 
  ## Enhanced logging features
-  * [Log entry types](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Log-entry-types.html)
-  * [Application level Logging](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Application-level-logging.html)
+ Log entry types represent categories of information you can write to a log file. You can categorize the information into server and client contexts. The log entry types in the client context are applicable to DataServer clients, ABL clients, and application server agent(s). However, the log entry types in the server context are applicable only to DataServer brokers.
+
+The degree of detail written to the log file is determined by the logging level.
+  * For more information see [Log entry types](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Log-entry-types.html)
+
+  The OpenEdge Logger framework provides ABL classes and interfaces that enable you to implement logging in your ABL application in a configurable way. Using this framework, you define custom log messages at various severity levels in your ABL application code. When the code runs, the framework produces log events containing the defined log messages. The log messages are then formatted and written to log files based on logging configurations defined in a configuration file. Because it uses configuration files, the Logger framework enables you to control the logging behavior (what gets written and where) without having to change your ABL application code.
+
+The Logger framework is modeled on the SLF4J pattern.
+
+  * For more information see [Application level Logging](https://docs.progress.com/bundle/openedge-abl-troubleshoot-applications/page/Application-level-logging.html)

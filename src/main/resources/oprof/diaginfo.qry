@@ -1,0 +1,5 @@
+{"O":"PASOE:type=OEManager,name=AgentManager",
+"M":["pushProfilerData","GMHHuqF3SvW90vHdjEqQsA",
+"http://localhost:8850/oediagstore/web/diag",100,
+"{\"Coverage\":false,\"AdapterMask\":null,\
+\"ProcList\":null,\"TestRunDescriptor\":\"Sample Test\"}"]}

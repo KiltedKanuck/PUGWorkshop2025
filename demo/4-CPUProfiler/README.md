@@ -1,6 +1,6 @@
 # CPU Profiler (-profile) 
 
-## About 
+## ABL profiler (ABL Performance Profiling)
 https://docs.progress.com/bundle/openedge-startup-and-parameter-reference/page/Profiler-profile.html
 
 The CPU Profiler is a performance profiling tool that measures the amount of CPU time used by an application. It can be used to identify performance bottlenecks and optimize the application.
@@ -11,36 +11,27 @@ The CPU Profiler is a performance profiling tool that measures the amount of CPU
 ### Example
 It can be turned on from the command line with the -profile <profiler.cfg>.
 
+`cd src/main/abl/examples`
+
 _Interactive_
 ```
-pro -p test.p -profile prof.cfg
+pro -p mainproc.p -profile ../../resources/oprof/prof.cfg
 ```
 _Batch_
 ```
-bpro -p test.p -profile prof.cfg
+bpro -p mainproc.p -profile ../../resources/oprof/prof.cfg
 ```
 
-You can use the vscode plugin ProPeek to view the profile data. You can also use the view option from PDSOE. The choice is yours.
+You can view performance data using the Profiler tool in Progress Developer Studio or ProPeek in Visual Studio Code The choice is yours.
 
-
-
-demo with and without -b
 
 add source at the end to generate listing. this is key for time-on-line
 
-https://docs.progress.com/bundle/pas-for-openedge-management/page/Use-Server-Side-ABL-Performance-Profiling.html
+## PASOE profiler (Server-Side ABL Performance Profiling)
 
+PAS for OpenEdge system administrators and developers can use Server-Side ABL Performance Profiling to gather and monitor run-time performance data about ABL applications running on a PAS for OpenEdge instance.
 
+This link below explains how to configure a PAS for OpenEdge instance to use performance profiling, configure the diagnostic store application, and view performance data using the Profiler tool in Progress Developer Studio or ProPeek in Visual Studio Code.
 
-localhost:9811/pug/web/mainproc ---> ./pugworkshop/demo/2-opentelelmenty/src/mainproc.p
+[Server-Side ABL Performance Profiling](https://docs.progress.com/bundle/pas-for-openedge-management/page/Use-Server-Side-ABL-Performance-Profiling.html)
 
-connect(localhost:9811:/pug/apsv)
-run mainproc.p on appserver
-
-/web/pug/workshop/mainproc
-
-web = transport
-pug = handler ROOT.handlers DOH data-object-handler
-workshop = service workshop.map
-mainproc = operation | GET -> workshop.interface.sampleService
-    function getCameron.p

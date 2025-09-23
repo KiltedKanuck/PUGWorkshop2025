@@ -16,17 +16,17 @@
     // Entries can have type 'source' or 'propath'. Path attribute is mandatory. Build attribute is optional (defaults to 'path'). Xref attribute is optional (defaults to 'build/.pct' or '.builder/srcX')
     // Source directories must be subdirectories of the project root directory. Relative paths are highly recommended.
     { "type": "source", "path": "src/main/abl" },
-    { "type": "source", "path": "src/test/abl" },
     { "type": "source", "path": "src/main/abl/examples" },
+    { "type": "source", "path": "src/test/abl" },
     { "type": "source", "path": "src/main/resources" },
     // Include and exclude patterns are case-insensitive on Windows, and case-sensitive on any other operating system
-    { "type": "propath", "path": "${DLC}/tty/netlib/OpenEdge.net.pl", "documentation": "openedge.json" }
+    { "type": "propath", "path": "${DLC}/tty/netlib/OpenEdge.net.pl" }
     
   ],
   "dbConnections": [ // Unlimited number of connections - Beware of -h
     {
       "name": "sports2020", // Logical name of database, or physical name if -ld is not used
-      "connect": "-db sports2020 -H 127.0.0.1 -s 11000" // ABL connection string
+      "connect": "-db sports2020 -H 127.0.0.1 -S 11000" // ABL connection string
     }
   ],
   "numThreads": 1, // Number of OpenEdge sessions handling build

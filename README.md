@@ -8,28 +8,57 @@ This repository contains OpenEdge ABL code and demos for application observabili
 
 ```
 demo/
-	1-OpenTelemetry/         # OpenTelemetry tracing and metrics demo
-	2-OpenEdgeMemoryProfiler/# Memory profiler demo for OpenEdge
-	3-CPUProfiler/           # CPU profiler demo
+	1-RuntimeDiagnostics/    # Runtime diagnostics and logging features
+	2-OpenTelemetry/         # OpenTelemetry tracing and metrics demo
+	3-OpenEdgeMemoryProfiler/# Memory profiler demo for OpenEdge
+	4-CPUProfiler/           # CPU profiler demo (ABL & PASOE)
+lab/                         # Lab exercises and additional examples
 src/
-	main/abl/                # (empty, for future main ABL code)
-	main/resources/          # (empty, for future resources)
-	test/abl/                # (empty, for future test code)
-	test/resources/          # (empty, for future test resources)
+	main/abl/
+		client/              # Client-side ABL code (remote.p for PASOE connections)
+		examples/            # Sample ABL procedures for profiling and testing
+		OpenEdge/Workshop/   # Workshop-specific ABL classes and interfaces
+	main/resources/
+		ablapps/             # PASOE application configuration
+		adapters/            # Web adapter configurations
+		oemp/                # OpenEdge Memory Profiler configurations
+		oprof/               # CPU profiler configurations and JMX queries
+		otel/                # OpenTelemetry configurations
+	test/abl/                # Test ABL code
+	test/resources/          # Test resources
 ```
 
 ## Demos
 
-- **OpenTelemetry**: See `demo/1-OpenTelemetry/README.md` for setup and usage. Demonstrates tracing and metrics in OpenEdge 12.8+ using OpenTelemetry APIs and configuration.
-- **OpenEdge Memory Profiler**: See `demo/2-OpenEdgeMemoryProfiler/README.md`. Tools and code for memory profiling in OpenEdge, including sample procedures and configuration.
-- **CPU Profiler**: See `demo/3-CPUProfiler/README.md`. Example code and setup for CPU profiling in OpenEdge.
+- **Runtime Diagnostics**: See `demo/1-RuntimeDiagnostics/README.md` for enhanced logging features, log entry types, and application-level logging using the OpenEdge Logger framework.
+- **OpenTelemetry**: See `demo/2-OpenTelemetry/README.md` for setup and usage. Demonstrates tracing and metrics in OpenEdge 12.8+ using OpenTelemetry APIs and configuration.
+- **OpenEdge Memory Profiler**: See `demo/3-OpenEdgeMemoryProfiler/README.md`. Tools and code for memory profiling in OpenEdge, including sample procedures and configuration.
+- **CPU Profiler**: See `demo/4-CPUProfiler/README.md`. Example code and setup for both ABL Performance Profiling and Server-Side ABL Performance Profiling in PASOE.
+
+## Key Features
+
+### Client-Server Connectivity
+- **PASOE Connection**: `src/main/abl/client/remote.p` demonstrates proper PASOE connection syntax using the `-URL` parameter
+- **Example Procedures**: Multiple sample ABL procedures in `src/main/abl/examples/` for testing profiling and diagnostics
+
+### Configuration Files
+- **OpenTelemetry**: JSON configurations for both standalone and PASOE environments
+- **Memory Profiler**: Configuration files for OpenEdge Memory Profiler
+- **CPU Profiler**: Profile configuration and JMX query files for performance monitoring
+- **PASOE**: Application and adapter configurations for Progress Application Server
+
+### Deployment
+- **Automated Deployment**: `src/main/deploy.bat` script for copying resources to PASOE server directories
+- **Project Configuration**: `openedge-project.json` with proper source paths and database connections
 
 ## Coding Standards
 
-- All code uses OpenEdge ABL syntax and conventions.
-- Variable names use camelCase; keywords are lowercase.
-- Reference the MCP server OpenEdge, collection "12.8" for syntax and best practices.
-- See `.github/copilot-instructions.md` and `.github/instructions/general.instructions.md` for more details.
+- All code uses OpenEdge ABL syntax and conventions
+- Variable names use camelCase; keywords are lowercase
+- Prefer `var` statement over `define variable` for variable declarations
+- Never use hyphens in variable names
+- Reference the MCP server OpenEdge, collection "12.8" for syntax and best practices
+- See `.github/windsurf-instructions.md` for Windsurf-specific guidance
 
 ---
-_This project is evolving. Please see individual demo folders for detailed instructions and updates._
+_This project provides comprehensive examples for OpenEdge application observability, profiling, and diagnostics. Each demo folder contains detailed instructions for specific use cases._

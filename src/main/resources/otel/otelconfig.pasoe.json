@@ -1,6 +1,6 @@
 {
   "OpenTelemetryConfiguration": {
-    "resource_attributes": "service.name=PUGWorkshop2025-Demo",
+    "resource_attributes": "service.name=PUGWorkshop2025-PASOE",
     "exporters": {
       "otlp": {
         "grpc": [

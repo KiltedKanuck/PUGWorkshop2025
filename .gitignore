@@ -7,3 +7,5 @@ build
 lbia*
 rcda*
 srta*
+*.prof
+dbg_*
