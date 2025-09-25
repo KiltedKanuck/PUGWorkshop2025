@@ -35,3 +35,16 @@ This link below explains how to configure a PAS for OpenEdge instance to use per
 
 [Server-Side ABL Performance Profiling](https://docs.progress.com/bundle/pas-for-openedge-management/page/Use-Server-Side-ABL-Performance-Profiling.html)
 
+One of the helpful options when configuring server-side profile is to look athe RequestLoBound option. This will help you profile long running processes and ignore short running processes.
+```
+{"O":"PASOE:type=OEManager,name=AgentManager","M":["pushProfilerData","AGENT_ID","http://host:port/oediagstore/web/diag",100,"{\"Coverage\":false,\"AdapterMask\":null,\"ProcList\":null,\"TestRunDescriptor\":\"PASOE Test\",\"RequestLoBound\":5000}"]}
+```
+The section below is the connection string for the diagnostic store application. Append this to `openedge-project.json`
+```
+,
+    {
+      "name": "oediagdb", // Logical name of database, or physical name if -ld is not used
+      "connect": "-db oediagdb -H 127.0.0.1 -S 5555" // ABL connection string
+    }
+```
+* Note: the statistics option is for OpenEdge Engineer Diagnositcs only, and should only be turn on when requested.
