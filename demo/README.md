@@ -1,4 +1,6 @@
 # Before we begin
+[OpenEdge Management Console](http://localhost:9090) | User: admin | Pass: help
+
 All examples should be run inside of a Proenv. To activate a Proenv from VSCode or Windsurf open a terminal window. Choose launch profile "Proenv"
 
 ## OpenEdge 12.8.9
@@ -14,14 +16,15 @@ This project is located at `C:\workspace\PUGWorkshop2025`. I have installed the 
 - vscode-pets - tonybaloney
 
 ## DATABASES `C:\databases`
-### sports2020
+### sports2020 - oem controlled
 Sports2020 Can be found `C:\databases\Sports2020`. We will use this database to run the examples. This database has an entry in OpenEdge Manager under database resources. It will autostart with your vm.
-### oediagdb
+### oediagdb - oem controlled
 This is the database for the diagnostic store application. IF you follow the instructions it will live under `c:\servers\diagstore\work\oediagdb`
 
 ## PASOE `C:\servers`
 ### Workshop
 There is a local PASOE instance running named "workshop". It is running on port 9810 & 9811. It lives under `C:\servers\workshop`
+- propath = `${CATALINA_BASE}/webapps/ROOT/WEB-INF/openedge,${CATALINA_BASE}/ablapps/workshop/openedge,${CATALINA_BASE}/openedge,${CATALINA_BASE}/openedge/examples,${DLC}/tty,${DLC}/tty/netlib/OpenEdge.Net.apl`
 
 ### Diagnostic Store
 The diagnostic store application should be installed under `C:\servers\workshop\oediagstore`. 
