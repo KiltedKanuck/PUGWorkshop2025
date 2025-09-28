@@ -2,5 +2,5 @@
 -s 50                                   # Stack size
 -h 10                                   # Hash table size
 -mmax 32768                             # Maximum memory (32MB)
--profileMemory mprofiler.config         # memory profiler configuration
+-profileMemory ../../resources/oemp/mprofiler.config         # memory profiler configuration
 

@@ -13,9 +13,9 @@ proant generate
 ```
 Now lets run them as one program with the memory profiler enabled:
 ```
-pro -pf mprofiler.pf -param "DoLeak=false" -p ObjectGen.p
-pro -pf mprofiler.pf -param "DoLeak=true" -p ObjectGen.p
-pro -pf mprofiler.pf -p CallTree.p
+pro -pf ../../resources/oemp/mprofiler.pf -param "DoLeak=false" -p ObjectGen.p
+pro -pf ../../resources/oemp/mprofiler.pf -param "DoLeak=true" -p ObjectGen.p
+pro -pf ../../resources/oemp/mprofiler.pf -p CallTree.p
 ```
 
 ## OpenEdge Memory Profiler Tool
